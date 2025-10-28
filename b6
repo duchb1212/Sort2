@@ -1,0 +1,32 @@
+public class QuickInPlace {
+    public static int partition(List<Integer> array, int head ,int tail) {
+        int pivot = array.get(tail);
+        int start = head - 1;
+        for (int i = head; i < tail; i++) {
+            if (array.get(i) <= pivot) {
+                start ++;
+                int temp = array.get(start);
+                array.set(start, array.get(i));
+                array.set(i, temp);
+            }
+        }
+        int temp = array.get(start + 1);
+        array.set(start + 1, pivot);
+        array.set(tail, temp);
+        return start + 1;
+    }
+    public static void printList(List<Integer> array, int head ,int tail) {
+        if (head < tail) {
+            int pivot = partition(array, head, tail);
+            tostring(array);
+            printList(array, head, pivot - 1);
+            printList(array, pivot + 1,  tail);
+        }
+    }
+    public static void tostring(List<Integer> array) {
+        for (int i : array) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+    }
+    }
