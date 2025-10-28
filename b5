@@ -1,0 +1,17 @@
+ public static List<Integer> quickSort(List<Integer> arr) {
+        // Write your code here
+        List<Integer> left = new ArrayList<>();
+        List<Integer> right = new ArrayList<>();
+        int node = arr.get(0);
+        for (int i : arr) {
+            if (i < node) {
+                left.add(i);
+            } else {
+                right.add(i);
+            }
+        }
+        for (int i : right) {
+            left.add(i);
+        }
+        return left;
+    }
