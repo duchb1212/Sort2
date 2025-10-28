@@ -1,0 +1,46 @@
+public class PriorityQueue {
+    class PriorityQueueElement {
+        int[] data;
+        int index;
+        int maxIndex;
+
+        public PriorityQueueElement(int maxIndex) {
+            this.data = new int[maxIndex];
+            this.maxIndex = maxIndex;
+            index = 0;
+        }
+
+        public void insert(int value) {
+            if (index < maxIndex) {
+                data[index] = value;
+                index++;
+            } else {
+                throw new IllegalStateException("Full");
+            }
+        }
+
+        public int deleteMin() {
+            if (index == 0) {
+                throw new IllegalStateException("Empty");
+            } else {
+                int min = data[0];
+                int current = 0;
+                for (int i = 1; i < index; i++) {
+                    if (data[i] < min) {
+                        min = data[i];
+                        current = i;
+                    }
+                }
+                for (int i = current; i < index - 1; i++) {
+                    data[i] = data[i + 1];
+                }
+                index--;
+                return min;
+            }
+        }
+    }
+    public static void main(String[] args) {
+        PriorityQueue pq = new PriorityQueue();
+    }
+
+}
